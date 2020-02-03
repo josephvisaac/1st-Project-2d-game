@@ -1,4 +1,5 @@
 
+// document.getElementById('canvas').focus();
 
 document.querySelector('#start-button').onclick = function () { //Start button is clicked 
     this.remove()  //removes start button
@@ -18,7 +19,7 @@ function startGame() {
     ctx.fillStyle="blue";
 
     //speed start
-    ctx.speedY = 0;
+    ctx.speedY = 2;
     //
     ctx.x = 30;         //sizes
     ctx.y = 30;         
@@ -36,13 +37,24 @@ function startGame() {
                 ctx.py += ctx.speedY;
             }
                 function moveup() {
-                ctx.speedY -= 1;
+                ctx.speedY -= 2;
             }
   
                 function movedown() {
-                    ctx.speedY += 1;
+                    ctx.speedY += 2;
                 }
 
+                document.onkeydown = function (e) {  
+                   
+                    switch (e.key) {  
+                        
+                        case 'ArrowUp':  moveup(); break;
+                        case 'ArrowDown': movedown(); break;
+                        
+                    }
+
+
+                }
 
             function animate () {
                 let loop = window.requestAnimationFrame(animate)
