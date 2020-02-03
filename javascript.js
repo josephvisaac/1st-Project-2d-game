@@ -3,6 +3,7 @@
 document.querySelector('#start-button').onclick = function () { //Start button is clicked 
     this.remove()  //removes start button
     startGame() //calls startGame
+    window.requestAnimationFrame(animate)
 }
 
 
@@ -17,12 +18,12 @@ function startGame() {
     ctx.fillStyle="blue";
 
     //speed start
-    ctx.speedY = 5;
+    ctx.speedY = 0;
     //
     ctx.x = 30;         //sizes
     ctx.y = 30;         
     ctx.px = 50;        //positions
-    ctx.py = 245;       
+    ctx.py = 300;       
     //
     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
 
@@ -31,24 +32,25 @@ function startGame() {
 
 
 
-ctx.newPos = function() {
-    this.y += this.speedY;
-  }
-
-  function updateGameArea() {9
-    ctx.newPos();
-    ctx.update();
-  }
-  function moveup() {
-    ctx.speedY -= 1;
-  }
+                function newPos(){
+                ctx.py += ctx.speedY;
+            }
+                function moveup() {
+                ctx.speedY -= 1;
+            }
   
-  function movedown() {
-    ctx.speedY += 1;
-  }
-  
+                function movedown() {
+                    ctx.speedY += 1;
+                }
 
 
- 
-    
-   window.requestAnimationFrame(updateGameArea)
+            function animate () {
+                let loop = window.requestAnimationFrame(animate)
+                ctx.clearRect(0, 0, canvas.width, canvas.height)
+                newPos()
+                ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
+
+
+                }
+                
+                
