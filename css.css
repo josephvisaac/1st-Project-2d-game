@@ -1,0 +1,12 @@
+canvas {
+    border: 1px solid red;
+}
+#start-button {
+    margin-top: 40px;
+   height: 50px;
+   width: 80px;
+}
+
+body {
+    height: 750px
+}
