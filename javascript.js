@@ -85,12 +85,16 @@ document.onkeydown = function (e) {
 
 }
 
+// let gameOver = new Audio()
 
 
 
 function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
 let r = getRandomArbitrary(240, 550)
 let x = 0;
+
+
+
 
 function checkCollision(){
     //  console.log(frameId)
@@ -100,9 +104,15 @@ function checkCollision(){
         ctx.py < stamp.y + stamp.height &&
         ctx.py + ctx.y > stamp.y) {
          console.log('collision detected!');
+
          
          window.cancelAnimationFrame(frameId)
-         window.clearInterval(scoreId) //434343
+         window.clearInterval(scoreId)
+         ctx.fillStyle = 'yellow'
+         ctx.font = '60px arial'
+         
+        ctx.fillText("GAME OVER", 273, 273);
+         
      }
     })
   }
