@@ -9,15 +9,8 @@ document.querySelector('#start-button').onclick = (e) => { //Start button is cli
 }
 
 
-
-
 var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
-
-
-
-
-
 
 
 function startGame() {
@@ -27,12 +20,12 @@ function startGame() {
 
     //speed start
     ctx.speedY = 4;
-    //
+    
     ctx.x = 30;         //sizes
     ctx.y = 30;
     ctx.px = 50;        //positions
     ctx.py = 300;
-    //
+    
     //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     drawBlueSquare()
     redo()
@@ -43,7 +36,10 @@ function startGame() {
 function drawBlueSquare(){
     ctx.fillStyle = "blue";
     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
+    // ctx.fillRect(50, 100, 50, 100, {upperLeft:10,upperRight:10}, true, true);
+
 }
+
 
 function newPos() {
 
@@ -59,14 +55,17 @@ function newPos() {
 
 }
 
+
 function moveup() {
     ctx.speedY = -4
 }
+
 
 function movedown() {
     
      ctx.speedY = 4;
 }
+
 
 document.onkeydown = function (e) {
 
@@ -81,13 +80,12 @@ document.onkeydown = function (e) {
 }
 
 
-
-
 function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
 let r = getRandomArbitrary(240, 550)
 let x = 0;
 
-function checkCollision(){
+
+function checkCollision(){                            // collision function
     //  console.log(frameId)
     empty.forEach(stamp => {
       if (ctx.px < stamp.x + stamp.width &&
@@ -100,18 +98,6 @@ function checkCollision(){
     })
   }
 
-// let empty = [];
-
-// function checkCollision(sq){
-//     console.log(sq, ctx.px, ctx.py, ctx.x, ctx.y)
-//     if(sq.x < ctx.px + ctx.x && )
-//     // if (rect1.x < rect2.x + rect2.width &&
-// //     rect1.x + rect1.width > rect2.x &&
-// //     rect1.y < rect2.y + rect2.height &&
-// //     rect1.y + rect1.height > rect2.y) {
-
-
-// }
 
 function stamp(){
     empty.forEach(sq=>{
@@ -130,6 +116,7 @@ let sq = {
     color:'red'
 }
 
+
 function redo() {
     console.log('called')
     setInterval(() => {
@@ -145,14 +132,6 @@ function redo() {
 console.log(sq)
    
 }
-
-// if (rect1.x < rect2.x + rect2.width &&
-//     rect1.x + rect1.width > rect2.x &&
-//     rect1.y < rect2.y + rect2.height &&
-//     rect1.y + rect1.height > rect2.y) {
-
-
-
 
 
 let frameId
