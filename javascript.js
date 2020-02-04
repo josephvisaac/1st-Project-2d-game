@@ -1,7 +1,7 @@
 
 
- let scoreboard = document.getElementById('score');
- 
+let scoreboard = document.getElementById('score');
+
  
  
 ;
@@ -31,11 +31,12 @@ function startGame() {
     ctx.y = 30;
     ctx.px = 50;        //positions
     ctx.py = 300;
-    
+
     //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     drawBlueSquare()
     redo()
 }   
+
 
 
 function drawBlueSquare(){
@@ -84,13 +85,16 @@ document.onkeydown = function (e) {
 
 }
 
+// let gameOver = new Audio()
 
 function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
 let r = getRandomArbitrary(240, 550)
 let x = 0;
 
 
-function checkCollision(){                            // collision function
+
+
+function checkCollision(){
     //  console.log(frameId)
     empty.forEach(stamp => {
       if (ctx.px < stamp.x + stamp.width &&
@@ -98,9 +102,16 @@ function checkCollision(){                            // collision function
         ctx.py < stamp.y + stamp.height &&
         ctx.py + ctx.y > stamp.y) {
          console.log('collision detected!');
+
          
          window.cancelAnimationFrame(frameId)
-         window.clearInterval(scoreId) //434343
+         window.clearInterval(scoreId)
+         ctx.fillStyle = 'yellow'
+         ctx.font = '60px arial'
+         
+        ctx.fillText("GAME OVER", 273, 273);
+        
+        
      }
     })
   }
@@ -181,7 +192,6 @@ function animate() {
     drawBlueSquare()
     stamp()
     checkCollision()
-    
     
 }
 
