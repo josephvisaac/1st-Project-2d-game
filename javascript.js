@@ -1,10 +1,16 @@
 
-// document.getElementById('canvas').focus();
 
+ let scoreboard = document.getElementById('score');
+ 
+ 
+ 
+;
+// scoreboard.innerHTML = 'CHANGED'
 document.querySelector('#start-button').onclick = (e) => { //Start button is clicked 
     console.log(e.target, this);
     e.target.remove()  //removes start button
     startGame(); //calls startGame
+    score()
     window.requestAnimationFrame(animate)
 }
 
@@ -29,7 +35,6 @@ function startGame() {
     //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     drawBlueSquare()
     redo()
-    
 }   
 
 
@@ -93,11 +98,37 @@ function checkCollision(){                            // collision function
         ctx.py < stamp.y + stamp.height &&
         ctx.py + ctx.y > stamp.y) {
          console.log('collision detected!');
+         
          window.cancelAnimationFrame(frameId)
+         window.clearInterval(scoreId) //434343
      }
     })
   }
 
+
+
+  function score(){
+      
+        let scores = 0;
+        scoreId = setInterval(() => {
+            scores += 1 
+            scoreboard.innerHTML = scores
+    }, 2000 )
+  }
+
+
+// let empty = [];
+
+// function checkCollision(sq){
+//     console.log(sq, ctx.px, ctx.py, ctx.x, ctx.y)
+//     if(sq.x < ctx.px + ctx.x && )
+//     // if (rect1.x < rect2.x + rect2.width &&
+// //     rect1.x + rect1.width > rect2.x &&
+// //     rect1.y < rect2.y + rect2.height &&
+// //     rect1.y + rect1.height > rect2.y) {
+
+
+// }
 
 function stamp(){
     empty.forEach(sq=>{
@@ -133,8 +164,16 @@ console.log(sq)
    
 }
 
+// if (rect1.x < rect2.x + rect2.width &&
+//     rect1.x + rect1.width > rect2.x &&
+//     rect1.y < rect2.y + rect2.height &&
+//     rect1.y + rect1.height > rect2.y) {
 
-let frameId
+
+
+
+let scoreId;//6546
+let frameId;//323232
 function animate() {
     frameId = window.requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -142,6 +181,10 @@ function animate() {
     drawBlueSquare()
     stamp()
     checkCollision()
+    
+    
 }
+
+
 
 
