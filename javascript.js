@@ -40,13 +40,11 @@ function startGame() {
 }   
 
 
-
-
-
 function drawBlueSquare(){
     ctx.fillStyle = "blue";
     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
 }
+
 function newPos() {
 
     if (ctx.py <= 0) {
@@ -89,6 +87,19 @@ function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min
 let r = getRandomArbitrary(240, 550)
 let x = 0;
 
+function checkCollision(){
+    //  console.log(frameId)
+    empty.forEach(stamp => {
+      if (ctx.px < stamp.x + stamp.width &&
+        ctx.px + ctx.x > stamp.x &&
+        ctx.py < stamp.y + stamp.height &&
+        ctx.py + ctx.y > stamp.y) {
+         console.log('collision detected!');
+         window.cancelAnimationFrame(frameId)
+     }
+    })
+  }
+
 // let empty = [];
 
 // function checkCollision(sq){
@@ -118,6 +129,7 @@ let sq = {
     height: 110,
     color:'red'
 }
+
 function redo() {
     console.log('called')
     setInterval(() => {
@@ -143,16 +155,14 @@ console.log(sq)
 
 
 
-
+let frameId
 function animate() {
-    let loop = window.requestAnimationFrame(animate)
+    frameId = window.requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     newPos()
-    
     drawBlueSquare()
     stamp()
-    
-   
+    checkCollision()
 }
 
 
