@@ -15,6 +15,11 @@ var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
 
 
+
+
+
+
+
 function startGame() {
     console.log('bla')
     //making player object
@@ -31,7 +36,12 @@ function startGame() {
     //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     drawBlueSquare()
     redo()
+    
 }   
+
+
+
+
 
 function drawBlueSquare(){
     ctx.fillStyle = "blue";
@@ -81,12 +91,32 @@ let x = 0;
 
 // let empty = [];
 
+// function checkCollision(sq){
+//     console.log(sq, ctx.px, ctx.py, ctx.x, ctx.y)
+//     if(sq.x < ctx.px + ctx.x && )
+//     // if (rect1.x < rect2.x + rect2.width &&
+// //     rect1.x + rect1.width > rect2.x &&
+// //     rect1.y < rect2.y + rect2.height &&
+// //     rect1.y + rect1.height > rect2.y) {
+
+
+// }
 
 function stamp(){
     empty.forEach(sq=>{
         ctx.fillStyle = sq.color
         ctx.fillRect(sq.x -=2,sq.y,sq.width, sq.height)
+        checkCollision(sq)
     })
+    
+  
+}
+let sq = {
+    x: 860,
+    y: getRandomArbitrary(0, 400),
+    width: 5,
+    height: 110,
+    color:'red'
 }
 function redo() {
     console.log('called')
@@ -100,9 +130,16 @@ function redo() {
         }
         empty.push(sq)
     }, 1750)
-    
+console.log(sq)
+   
 }
-// redo() //create all bad guys red square
+
+// if (rect1.x < rect2.x + rect2.width &&
+//     rect1.x + rect1.width > rect2.x &&
+//     rect1.y < rect2.y + rect2.height &&
+//     rect1.y + rect1.height > rect2.y) {
+
+
 
 
 
@@ -114,7 +151,8 @@ function animate() {
     
     drawBlueSquare()
     stamp()
-
+    
+   
 }
 
 

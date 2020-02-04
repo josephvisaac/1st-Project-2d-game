@@ -1,5 +1,6 @@
 canvas {
     border: 1px solid red;
+    background-image: url(/stars-background-project-1.jfif);
 }
 #start-button {
     margin-top: 40px;
@@ -8,5 +9,8 @@ canvas {
 }
 
 body {
+    
+   
     height: 95%
+    
 }
