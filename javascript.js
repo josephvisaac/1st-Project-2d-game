@@ -1,10 +1,16 @@
 
-// document.getElementById('canvas').focus();
 
+ let scoreboard = document.getElementById('score');
+ 
+ 
+ 
+;
+// scoreboard.innerHTML = 'CHANGED'
 document.querySelector('#start-button').onclick = (e) => { //Start button is clicked 
     console.log(e.target, this);
     e.target.remove()  //removes start button
     startGame(); //calls startGame
+    score()
     window.requestAnimationFrame(animate)
 }
 
@@ -36,7 +42,6 @@ function startGame() {
     //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     drawBlueSquare()
     redo()
-    
 }   
 
 
@@ -95,10 +100,24 @@ function checkCollision(){
         ctx.py < stamp.y + stamp.height &&
         ctx.py + ctx.y > stamp.y) {
          console.log('collision detected!');
+         
          window.cancelAnimationFrame(frameId)
+         window.clearInterval(scoreId) //434343
      }
     })
   }
+
+
+
+  function score(){
+      
+        let scores = 0;
+        scoreId = setInterval(() => {
+            scores += 1 
+            scoreboard.innerHTML = scores
+    }, 2000 )
+  }
+
 
 // let empty = [];
 
@@ -154,8 +173,8 @@ console.log(sq)
 
 
 
-
-let frameId
+let scoreId;//6546
+let frameId;//323232
 function animate() {
     frameId = window.requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -163,6 +182,10 @@ function animate() {
     drawBlueSquare()
     stamp()
     checkCollision()
+    
+    
 }
+
+
 
 
