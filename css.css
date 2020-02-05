@@ -25,17 +25,17 @@ body {
 
 @keyframes spin {
    
-    40% {
+    10% {
         transform:rotate(0deg) 
         
    }
-    99% {
+     50% {
         transform:rotate(180deg) 
         scale(0.3)
         
-    }
-    100% {
+    } 
+     10% {
         transform:rotate(0deg) 
 
-    }
+    }  
 }
