@@ -1,9 +1,9 @@
 
 
-let scoreboard = document.getElementById('score');
-
- 
- 
+ let scoreboard = document.getElementById('score');
+ var sound = new Audio("mario-gameover.mp3");
+ var boing = new Audio("boing.mp3");
+ var stAUD = new Audio("start.mp3")
 ;
 // scoreboard.innerHTML = 'CHANGED'
 document.querySelector('#start-button').onclick = (e) => { //Start button is clicked 
@@ -19,11 +19,19 @@ var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
 
 
+
+
+
+
+
+
+
 function startGame() {
     console.log('bla')
+    stAUD.play()
     //making player object
     empty = [];
-
+    
     //speed start
     ctx.speedY = 4;
     
@@ -50,12 +58,16 @@ function drawBlueSquare(){
 function newPos() {
 
     if (ctx.py <= 0) {
+        boing.play()
         ctx.speedY = 4;
         ctx.py = 1;
+        
     }
     else if (ctx.py >= 460) {
+        boing.play()
         ctx.speedY = -4;
         ctx.py = 458;
+        
     }
     ctx.py += ctx.speedY;
 
@@ -85,7 +97,6 @@ document.onkeydown = function (e) {
 
 }
 
-// let gameOver = new Audio()
 
 function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
 let r = getRandomArbitrary(240, 550)
@@ -110,8 +121,7 @@ function checkCollision(){
          ctx.font = '60px arial'
          
         ctx.fillText("GAME OVER", 273, 273);
-        
-        
+        sound.play()
      }
     })
   }
