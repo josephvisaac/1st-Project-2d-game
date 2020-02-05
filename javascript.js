@@ -19,6 +19,8 @@ var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
 
 
+
+
 function startGame() {
     console.log('bla')
     stAUD.play()
@@ -30,23 +32,24 @@ function startGame() {
     
     ctx.x = 30;         //sizes
     ctx.y = 30;
-    ctx.px = 50;        //positions
+    ctx.px = canvas.width/2;        //positions
     ctx.py = 300;
    redo()
 }   
 
 
 
-function drawBlueSquare(){                                               
-    ctx.fillStyle = "blue";
-    ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
+// function drawBlueSquare(){                                               
+//     ctx.fillStyle = "blue";
+//     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     
-    //ctx.beginPath();                                                   // circle
-    //ctx.arc(100, 75, 50, 0, 2 * Math.PI);
-    //ctx.stroke();
+// }
 
-    // ctx.fillRect(50, 100, 50, 100, {upperLeft:10,upperRight:10}, true, true);
-
+function drawCircle(){
+    ctx.beginPath();
+    ctx.arc(ctx.px, ctx.py, ctx.x, 0, 2 * Math.PI);
+    ctx.fillStyle = 'blue'
+    ctx.fill()
 }
 
 
@@ -194,10 +197,10 @@ function animate() {
     frameId = window.requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     newPos()
-    drawBlueSquare()                                                         
+    drawCircle()                                                         
     stamp()
     checkCollision()
-    
+    console.log(ctx)
 }
 
 

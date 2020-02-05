@@ -1,7 +1,7 @@
 canvas {
     /* border: 1px solid red; */
     /* background-image: url(/stars-background-project-1.jfif); */
-    animation: spin 15s infinite
+    animation: spin 5s infinite
 }
 #start-button {
     size: 70px;
