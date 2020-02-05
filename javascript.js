@@ -1,9 +1,8 @@
-
-
  let scoreboard = document.getElementById('score');
  var sound = new Audio("mario-gameover.mp3");
  var boing = new Audio("boing.mp3");
  var stAUD = new Audio("start.mp3");
+
 
 // scoreboard.innerHTML = 'CHANGED'
 document.querySelector('#start-button').onclick = (e) => { //Start button is clicked 
@@ -17,8 +16,6 @@ document.querySelector('#start-button').onclick = (e) => { //Start button is cli
 
 var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
-
-
 
 
 function startGame() {
@@ -38,12 +35,11 @@ function startGame() {
 }   
 
 
-
-// function drawBlueSquare(){                                               
+// function drawBlueSquare(){                                    // draw square                                              
 //     ctx.fillStyle = "blue";
 //     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
-    
 // }
+
 
 function drawCircle(){
     ctx.beginPath();
@@ -78,7 +74,6 @@ function moveup() {
 
 
 function movedown() {
-    
      ctx.speedY = 4;
 }
 
@@ -101,8 +96,6 @@ let r = getRandomArbitrary(240, 550)
 let x = 0;
 
 
-
-
 function checkCollision(){
     //  console.log(frameId)
     empty.forEach(stamp => {
@@ -115,15 +108,15 @@ function checkCollision(){
          
          window.cancelAnimationFrame(frameId)
          window.clearInterval(scoreId)
+         
          ctx.fillStyle = 'yellow'
          ctx.font = '60px arial'
+         ctx.fillText("GAME OVER", 273, 273);
          
-        ctx.fillText("GAME OVER", 273, 273);
-        sound.play()
+         sound.play()
      }
     })
   }
-
 
 
   function score(){
