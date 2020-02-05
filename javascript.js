@@ -15,8 +15,6 @@ document.querySelector('#start-button').onclick = (e) => { //Start button is cli
 }
 
 
-
-
 var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
 
@@ -36,22 +34,26 @@ function startGame() {
     
     //speed start
     ctx.speedY = 4;
-    //
+    
     ctx.x = 30;         //sizes
     ctx.y = 30;
     ctx.px = 50;        //positions
     ctx.py = 300;
-    //
+
     //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
     drawBlueSquare()
     redo()
 }   
 
 
+
 function drawBlueSquare(){
     ctx.fillStyle = "blue";
     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
+    // ctx.fillRect(50, 100, 50, 100, {upperLeft:10,upperRight:10}, true, true);
+
 }
+
 
 function newPos() {
 
@@ -71,14 +73,17 @@ function newPos() {
 
 }
 
+
 function moveup() {
     ctx.speedY = -4
 }
+
 
 function movedown() {
     
      ctx.speedY = 4;
 }
+
 
 document.onkeydown = function (e) {
 
@@ -91,8 +96,6 @@ document.onkeydown = function (e) {
 
 
 }
-
-
 
 
 function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min; }
@@ -165,6 +168,7 @@ let sq = {
     color:'red'
 }
 
+
 function redo() {
     console.log('called')
     setInterval(() => {
@@ -198,7 +202,6 @@ function animate() {
     drawBlueSquare()
     stamp()
     checkCollision()
-    
     
 }
 
