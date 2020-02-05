@@ -3,8 +3,8 @@
  let scoreboard = document.getElementById('score');
  var sound = new Audio("mario-gameover.mp3");
  var boing = new Audio("boing.mp3");
- var stAUD = new Audio("start.mp3")
-;
+ var stAUD = new Audio("start.mp3");
+
 // scoreboard.innerHTML = 'CHANGED'
 document.querySelector('#start-button').onclick = (e) => { //Start button is clicked 
     console.log(e.target, this);
@@ -17,13 +17,6 @@ document.querySelector('#start-button').onclick = (e) => { //Start button is cli
 
 var canvas = document.getElementById('canvas'); //calling canvas
 var ctx = canvas.getContext('2d');
-
-
-
-
-
-
-
 
 
 function startGame() {
@@ -39,17 +32,19 @@ function startGame() {
     ctx.y = 30;
     ctx.px = 50;        //positions
     ctx.py = 300;
-
-    //ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
-    drawBlueSquare()
-    redo()
+   redo()
 }   
 
 
 
-function drawBlueSquare(){
+function drawBlueSquare(){                                               
     ctx.fillStyle = "blue";
     ctx.fillRect(ctx.px, ctx.py, ctx.x, ctx.y);
+    
+    //ctx.beginPath();                                                   // circle
+    //ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+    //ctx.stroke();
+
     // ctx.fillRect(50, 100, 50, 100, {upperLeft:10,upperRight:10}, true, true);
 
 }
@@ -199,7 +194,7 @@ function animate() {
     frameId = window.requestAnimationFrame(animate)
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     newPos()
-    drawBlueSquare()
+    drawBlueSquare()                                                         
     stamp()
     checkCollision()
     
