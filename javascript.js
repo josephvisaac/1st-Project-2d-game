@@ -4,6 +4,11 @@
  var stAUD = new Audio("start.mp3");
 
 
+ function showScore(){
+     document.querySelector('#scoreboard').innerHTML = JSON.parse(localStorage.getItem('allScores')).map((eachScore)=>`<li>${eachScore.name} .. ${eachScore.score}</li>`)
+ }
+ showScore()
+
 // scoreboard.innerHTML = 'CHANGED'
 document.querySelector('#start-button').onclick = (e) => { //Start button is clicked 
     console.log(e.target, this);
@@ -95,6 +100,7 @@ function getRandomArbitrary(min, max) { return Math.random() * (max - min) + min
 let r = getRandomArbitrary(240, 550)
 let x = 0;
 
+let gameover = false
 
 function checkCollision(){
     //  console.log(frameId)
@@ -103,9 +109,9 @@ function checkCollision(){
         ctx.px + ctx.x > stamp.x &&
         ctx.py < stamp.y + stamp.height &&
         ctx.py + ctx.y > stamp.y) {
-         console.log('collision detected!');
+         console.log('collision detected!',frameId);
 
-         
+         gameover = true 
          window.cancelAnimationFrame(frameId)
          window.clearInterval(scoreId)
          
@@ -114,14 +120,32 @@ function checkCollision(){
          ctx.fillText("GAME OVER", 273, 273);
          
          sound.play()
+         return
      }
     })
+    if(gameover){
+        return addScore()
+    }
   }
+
+  function addScore(){
+      let name = prompt('what is your name?')
+      console.log(name,scores);
+
+      let allScores = localStorage.getItem('allScores') ? JSON.parse(localStorage.getItem('allScores')) : []
+        console.log(allScores)
+
+      allScores.unshift({name:name, score:scores})
+      localStorage.setItem('allScores', JSON.stringify(allScores))
+      showScore()
+      console.log(allScores)
+  }
+
+  let scores = 0;
 
 
   function score(){
       
-        let scores = 0;
         scoreId = setInterval(() => {
             scores += 1 
             scoreboard.innerHTML = scores
@@ -146,7 +170,7 @@ function stamp(){
     empty.forEach(sq=>{
         ctx.fillStyle = sq.color
         ctx.fillRect(sq.x -=2,sq.y,sq.width, sq.height)
-        checkCollision(sq)
+        //checkCollision(sq)
     })
     
   
@@ -193,7 +217,7 @@ function animate() {
     drawCircle()                                                         
     stamp()
     checkCollision()
-    console.log(ctx)
+    
 }
 
 
