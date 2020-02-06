@@ -5,7 +5,8 @@
 
 
  function showScore(){
-     document.querySelector('#scoreboard').innerHTML = JSON.parse(localStorage.getItem('allScores')).map((eachScore)=>`<li>${eachScore.name} .. ${eachScore.score}</li>`)
+     document.querySelector('#scoreboard').innerHTML = 
+     JSON.parse(localStorage.getItem('allScores')).slice(0,10).map((eachScore)=>`<li>${eachScore.name} .. ${eachScore.score}</li>`)
  }
  showScore()
 
@@ -134,8 +135,9 @@ function checkCollision(){
 
       let allScores = localStorage.getItem('allScores') ? JSON.parse(localStorage.getItem('allScores')) : []
         console.log(allScores)
-
-      allScores.unshift({name:name, score:scores})
+    
+      allScores.unshift({name:name, score:scores});
+      allScores.sort((a,b) => b.score - a.score)
       localStorage.setItem('allScores', JSON.stringify(allScores))
       showScore()
       console.log(allScores)
