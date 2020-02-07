@@ -7,7 +7,7 @@
  function showScore(){
     let newScore = JSON.parse(localStorage.getItem('allScores'));
      
-     document.querySelector('#scoreboard').innerHTML = 
+     document.querySelector('#scoreboard').innerHTML = newScore &&
      newScore.filter((_,i)=> i <= 10).map(eachScore=>`<li>${eachScore.name} .. ${eachScore.score}</li>`);
  }
  showScore()
