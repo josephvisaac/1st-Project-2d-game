@@ -9,6 +9,7 @@
      
      document.querySelector('#scoreboard').innerHTML = newScore &&
      newScore.filter((_,i)=> i <= 10).map(eachScore=>`<li>${eachScore.name} .. ${eachScore.score}</li>`);
+     console.log('here');
  }
  showScore()
 
