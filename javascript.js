@@ -7,10 +7,10 @@
  function showScore(){
     let newScore = JSON.parse(localStorage.getItem('allScores'));
      
-     document.querySelector('#scoreboard').innerHTML = newScore ?
-     newScore.slice(0,10).map((eachScore)=>`<li>${eachScore.name} .. ${eachScore.score}</li>`)
+     document.querySelector('#scoreboard').innerHTML = newScore.length > 10 ?
+     newScore.slice(0,10).map(eachScore=>`<li>${eachScore.name} .. ${eachScore.score}</li>`)
      :
-     "There is no score, be the first one!";
+     newScore.map(eachScore=>`<li>${eachScore.name} .. ${eachScore.score}</li>`);
  }
  showScore()
 
