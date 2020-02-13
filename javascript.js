@@ -8,7 +8,7 @@
     let newScore = JSON.parse(localStorage.getItem('allScores'));
      
      document.querySelector('#scoreboard').innerHTML = newScore &&
-     newScore.filter((_,i)=> i <= 10).map(eachScore=>`<li>${eachScore.name} .. ${eachScore.score}</li>`);
+     newScore.filter((_,i)=> i <= 4).map(eachScore=>`<li>${eachScore.name} .. ${eachScore.score}</li>`);
      console.log('here');
  }
  showScore()
@@ -21,6 +21,12 @@ document.querySelector('#start-button').onclick = (e) => { //Start button is cli
     score()
     window.requestAnimationFrame(animate)
 }
+// document.querySelector('#restart-button').onclick = (e) => {
+//     console.log(e.target, this);
+//     e.target.remove()
+//     startGame();
+//     window.requestAnimationFrame(animate)
+// }
 
 
 var canvas = document.getElementById('canvas'); //calling canvas
@@ -53,7 +59,7 @@ function startGame() {
 function drawCircle(){
     ctx.beginPath();
     ctx.arc(ctx.px, ctx.py, ctx.x, 0, 2 * Math.PI);
-    ctx.fillStyle = 'blue'
+    ctx.fillStyle = 'purple'
     ctx.fill()
 }
 

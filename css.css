@@ -18,6 +18,19 @@ canvas {
    height: 50px;
    width: 80px;
 }
+#restart-button {
+    size: 90px;
+    font-size: 20px;
+    border-width: 0cm;
+    font-weight: bold;
+    color: greenyellow;
+    background-color: orangered;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 100px;
+    border-radius: 25px;
+    height: 50px;
+    width: 80px;
+}
 #scoreboard{
     position: absolute;
     color:yellowgreen;
